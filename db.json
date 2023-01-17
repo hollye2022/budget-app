@@ -1,0 +1,81 @@
+{
+  "plans": [
+    {
+      "category": "Dine out🍽",
+      "amount": "200",
+      "id": 1
+    },
+    {
+      "category": "Clothing👖",
+      "amount": "400",
+      "id": 2
+    },
+    {
+      "category": "Grocery🥦",
+      "amount": "400",
+      "id": 3
+    },
+    {
+      "category": "Grocery🥦",
+      "amount": "300",
+      "id": 4
+    },
+    {
+      "category": "Household🏚",
+      "amount": "100",
+      "id": 5
+    },
+    {
+      "category": "Kids🤑",
+      "amount": "1000",
+      "id": 6
+    }
+  ],
+  "income": [
+    {
+      "amount": "300",
+      "source": "Gifts",
+      "id": 1
+    },
+    {
+      "amount": "300",
+      "source": "Job1",
+      "id": 2
+    },
+    {
+      "amount": "100",
+      "source": "Job2",
+      "id": 3
+    }
+  ],
+  "expense": [
+    {
+      "date": "2023-01-17",
+      "amount": "10",
+      "category": "Unexpected Bill🧾",
+      "notes": "gas",
+      "id": 1
+    },
+    {
+      "date": "2023-01-17",
+      "amount": "300",
+      "category": "Dine out🍽",
+      "notes": "hi",
+      "id": 2
+    },
+    {
+      "date": "2023-01-17",
+      "amount": "300",
+      "category": "Dine out🍽",
+      "notes": "ni",
+      "id": 3
+    },
+    {
+      "date": "2023-01-17",
+      "amount": "300",
+      "category": "Dine out🍽",
+      "notes": "ni",
+      "id": 4
+    }
+  ]
+}
