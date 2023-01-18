@@ -3,13 +3,15 @@ import IncomeList from './IncomeList'
 
 function AddIncome({income, toSubmitIncome}) {
 
-    const [formData, setFormData] =useState([])
+    const [formData, setFormData] =useState({
+        amount:"",
+        source:""
+    })
 
     function handleChange(e){
 
-        const {name,value} = e
         setFormData(prev=>({...prev,
-            [name]:value}))
+            [e.target.name]:e.target.value}))
       }
 
     
@@ -23,16 +25,16 @@ function AddIncome({income, toSubmitIncome}) {
                 Accept:"application/json"
             },
             body: JSON.stringify({
-                amount:e.target[0].value,
-                 source:e.target[1].value
+                amount:parseInt(formData.amount),
+                 source:formData.source
         })
         })
         .then(res=>res.json())
         .then((data)=>toSubmitIncome(data))
       }
 
-      const totalIncome = income.reduce((total,item)=>{return total+item.anount},0)
-      console.log(totalIncome)
+      const totalIncome = income.reduce((total,item)=>{return total+item.amount},0)
+     
 
   return (
     <>
@@ -41,14 +43,14 @@ function AddIncome({income, toSubmitIncome}) {
     <div>
         <label>
             Amount:
-            <input name="amount" onChange={handleChange} type="text"></input>
+            <input name="amount" onChange={handleChange} value={formData.amount} type="text"></input>
         </label>
     </div>
 
     <div>
         <label>
             Source:
-            <select type="text" onChange={handleChange} name="source" >
+            <select type="text" onChange={handleChange} name="source" value={formData.source} >
                 <option>Job1</option>
                 <option>Job2</option>
                 <option>Gifts</option>

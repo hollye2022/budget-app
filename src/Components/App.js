@@ -8,7 +8,8 @@ import Home from "./Home";
 import AddIncome from "./AddIncome";
 import Fallback from "./Fallback"
 import BudgetPlan from "./BudgetPlan"
-
+// import EditExpenseForm from "./EditExpenseForm"
+import EditBudgetPlan from "./EditBudgetPlan";
 
 function App() {
 
@@ -42,15 +43,39 @@ function App() {
 // }
 
 function toSubmitPlan(data){
-     setPlans(data)
+     setPlans(prevs=>[...prevs,data])
 }
 
 function toSubmitIncome(data){
-  setIncome(data)
+  setIncome(prevs=>[...prevs,data])
 }
 
 function toSubmitExpense(data){
-  setExpense(data)
+  setExpense(prevs=>[...prevs,data])
+}
+
+function toSort(){
+  const newExpense = [...expense].sort((a,b)=>a.category >b.category ? 1:-1)
+  // console.log(newExpense)
+  setExpense(newExpense)
+}
+
+function toSearch(data){
+  const newData=expense.filter(item => item.notes.toLowerCase().includes(data.toLowerCase()))
+setExpense(newData)
+
+}
+
+function toEdit(updatedBudget){
+  const updatedBudgetArray=plans.map(item=>{
+    if(item.id===updatedBudget.id){
+      return updatedBudget
+    } 
+    else {
+      return item
+    }
+  })
+   setPlans(updatedBudgetArray)
 }
 
   return (
@@ -59,15 +84,19 @@ function toSubmitExpense(data){
       <Switch>
 
         <Route  path="/AddExpense" >
-          <AddExpense expense={expense} toSubmitExpense={toSubmitExpense}/>
+          <AddExpense expense={expense} toSubmitExpense={toSubmitExpense} toSort={toSort} toSearch={toSearch}/>
         </Route>
 
         <Route  path="/Home">
-          <Home />
+          <Home plans={plans} income={income} expense={expense}/>
         </Route >
 
         <Route  path="/AddIncome" >
           <AddIncome income={income} toSubmitIncome={toSubmitIncome} />
+        </Route>
+
+        <Route path="/BudgetPlan/:id/edit">
+          <EditBudgetPlan expense={expense} toEditExpense={toEdit}/>
         </Route>
 
         <Route  path="/BudgetPlan" >

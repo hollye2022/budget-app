@@ -15,9 +15,9 @@ function BudgetPlan({plans,toSubmitPlan}) {
     
 
   function handleChange(e){
-   const {name,value} = e
+
     setFormData(prev=>({...prev,
-        [name]:value}))
+        [e.target.name]:e.target.value}))
   }
 
     function handlePlanSubmit(e){
@@ -29,8 +29,8 @@ function BudgetPlan({plans,toSubmitPlan}) {
             Accept:"application/json"
         },
         body: JSON.stringify({
-            category:e.target[0].value,
-             amount:e.target[1].value
+            category:formData.category,
+             amount:parseInt(formData.amount)
     })
     })
     .then(res=>res.json())
@@ -58,7 +58,7 @@ function BudgetPlan({plans,toSubmitPlan}) {
 
 const totalBudget= plans.reduce((total,item)=>{return total + item.amount},0)
   
-console.log(totalBudget)
+// console.log(totalBudget)
 
   return (
     <div >
@@ -68,7 +68,7 @@ console.log(totalBudget)
 
         <label>
             Category:
-        <select style={{fontSize:16}}  name="category" onChange={handleChange} >
+        <select style={{fontSize:16}}  name="category" onChange={handleChange} value={formData.category} >
             <option>Grocery🥦</option>
             <option>Dine out🍽</option>
             <option>Clothing👖</option>
@@ -90,7 +90,7 @@ console.log(totalBudget)
         <div>
         <label>
            Budget Amount:
-        <input type="text"  name="amount" onChange={handleChange} ></input>
+        <input type="text"  name="amount" onChange={handleChange} value={formData.amount} ></input>
         </label>
         </div>
         <button type="tetx">+Add</button>

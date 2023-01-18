@@ -2,80 +2,217 @@
   "plans": [
     {
       "category": "Dine out🍽",
-      "amount": "200",
+      "amount": 50000,
       "id": 1
     },
     {
       "category": "Clothing👖",
-      "amount": "400",
+      "amount": 200,
       "id": 2
     },
     {
       "category": "Grocery🥦",
-      "amount": "400",
+      "amount": 200,
       "id": 3
     },
     {
       "category": "Grocery🥦",
-      "amount": "300",
+      "amount": 300,
       "id": 4
     },
     {
       "category": "Household🏚",
-      "amount": "100",
+      "amount": 200,
       "id": 5
     },
     {
       "category": "Kids🤑",
-      "amount": "1000",
+      "amount": 1000,
       "id": 6
+    },
+    {
+      "category": "Gas⛽️",
+      "amount": 200,
+      "id": 7
+    },
+    {
+      "category": "Kids🤑",
+      "amount": 400,
+      "id": 8
     }
   ],
   "income": [
     {
-      "amount": "300",
+      "amount": 300,
       "source": "Gifts",
       "id": 1
     },
     {
-      "amount": "300",
+      "amount": 300,
       "source": "Job1",
       "id": 2
     },
     {
-      "amount": "100",
+      "amount": 100,
       "source": "Job2",
       "id": 3
+    },
+    {
+      "amount": 400,
+      "source": "Job2",
+      "id": 4
+    },
+    {
+      "amount": 300,
+      "source": "",
+      "id": 5
+    },
+    {
+      "amount": 300000,
+      "source": "",
+      "id": 6
     }
   ],
   "expense": [
     {
       "date": "2023-01-17",
-      "amount": "10",
+      "amount": 10,
       "category": "Unexpected Bill🧾",
       "notes": "gas",
       "id": 1
     },
     {
       "date": "2023-01-17",
-      "amount": "300",
+      "amount": 300,
       "category": "Dine out🍽",
       "notes": "hi",
       "id": 2
     },
     {
       "date": "2023-01-17",
-      "amount": "300",
+      "amount": 300,
       "category": "Dine out🍽",
       "notes": "ni",
       "id": 3
     },
     {
       "date": "2023-01-17",
-      "amount": "300",
+      "amount": 300,
       "category": "Dine out🍽",
       "notes": "ni",
       "id": 4
+    },
+    {
+      "date": "2023-01-18",
+      "amount": 30,
+      "category": "Grocery🥦",
+      "notes": "",
+      "id": 5
+    },
+    {
+      "date": "2023-01-19",
+      "amount": 100,
+      "category": "Gas⛽️",
+      "notes": "gas",
+      "id": 6
+    },
+    {
+      "date": "2023-01-17",
+      "amount": 300,
+      "category": "",
+      "notes": "gas",
+      "id": 7
+    },
+    {
+      "date": "2023-01-18",
+      "amount": 100,
+      "category": "Clothing👖",
+      "notes": "",
+      "id": 8
+    },
+    {
+      "date": "2023-01-18",
+      "amount": 300,
+      "category": "Travel🌠",
+      "notes": "410",
+      "id": 9
+    },
+    {
+      "date": "2023-01-16",
+      "amount": 20,
+      "category": "Entertainment😁",
+      "notes": "hi",
+      "id": 10
+    },
+    {
+      "date": "2023-01-18",
+      "amount": 300,
+      "category": "Dine out🍽",
+      "notes": "",
+      "id": 11
+    },
+    {
+      "date": "2023-01-18",
+      "amount": 300,
+      "category": "Clothing👖",
+      "notes": "hi",
+      "id": 12
+    },
+    {
+      "date": "2023-01-17",
+      "amount": 300,
+      "category": "",
+      "notes": "",
+      "id": 13
+    },
+    {
+      "date": "2023-01-17",
+      "amount": 300,
+      "category": "Dine out🍽",
+      "notes": "",
+      "id": 14
+    },
+    {
+      "date": "2023-01-03",
+      "amount": 100,
+      "category": "Rent💲",
+      "notes": "rent",
+      "id": 15
+    },
+    {
+      "date": "2023-01-03",
+      "amount": 100,
+      "category": "Rent💲",
+      "notes": "rent",
+      "id": 16
+    },
+    {
+      "date": "2023-01-01",
+      "amount": 10000,
+      "category": "Rent💲",
+      "notes": "",
+      "id": 17
+    },
+    {
+      "date": "2023-01-04",
+      "amount": 400,
+      "category": "Kids🤑",
+      "notes": "",
+      "id": 18
+    },
+    {
+      "date": "2023-01-03",
+      "amount": 100000,
+      "category": "Study📖",
+      "notes": "nooooo",
+      "id": 19
+    },
+    {
+      "date": "",
+      "amount": null,
+      "category": "",
+      "notes": "",
+      "id": 20
     }
   ]
 }

@@ -2,10 +2,10 @@ import React,{ useState } from 'react'
 import ExpenseList from './ExpenseList'
 
 
-function AddExpense({expense, toSubmitExpense}) {
-
+function AddExpense({expense, toSubmitExpense,toSort,toSearch}) {
+// console.log(expense)
     
-    const [formDta, setFormdata] = useState({
+    const [formData, setFormData] = useState({
         date:"",
         amount:"",
         category:"",
@@ -13,8 +13,9 @@ function AddExpense({expense, toSubmitExpense}) {
     })
 
     function handleChange(e){
-      const {name,value} =e
-      setFormdata(pres=>({...pres, [name]:value}) )}
+
+      setFormData(prevs=>({...prevs, [e.target.name]:e.target.value}))
+    }
 
     function handleExpenseSubmit(e){
         e.preventDefault()
@@ -25,38 +26,54 @@ function AddExpense({expense, toSubmitExpense}) {
                 Accept:"application/json"
             },
             body: JSON.stringify({
-                date:e.target[0].value,
-                amount:e.target[1].value,
-                category:e.target[2].value,
-                notes:e.target[3].value
+                date:formData.date,
+                amount:parseInt(formData.amount),
+                category:formData.category,
+                notes:formData.notes
+
             })
         })
         .then(res=>res.json())
         .then(data=>toSubmitExpense(data))
+            
        
 
     }
-const totalExpense=expense.reduce((total,item)=>{return total+item.amount},0)
+const totalExpense=expense.reduce((total,item)=>{return total+ item.amount},0)
+
+// function handleClick(){
+//     let today = new Date();
+//     setFormData(prev=>({...prev,["date"]:today.toISOString().split('T')[0]}))
+//     console.log(formData)
+// }
+function handleCategory(){
+    toSort()
+}
+
+function handleSearch(e){
+    toSearch(e.target.value)
+}
   return (
     <div >
     <form onSubmit={handleExpenseSubmit} className='expenses'>
         <div>
         <label>
             Date:
-        <input type="date" onChange={handleChange} name="date" ></input>
+        <input type="date" onChange={handleChange} name="date" value={formData.date} ></input>
+        {/* <button onClick={handleClick} >Today</button> */}
         </label>
         </div>
         <div>
         <label>
             Amount:
-        <input type="text" onChange={handleChange} name="amount" ></input>
+        <input type="number" onChange={handleChange} name="amount" value={formData.amount} ></input>
         </label>
         </div>
 
         <div>
         <label>
             Category:
-        <select onChange={handleChange} name="category" >
+        <select onChange={handleChange} name="category" value={formData.category} >
         <option>Grocery🥦</option>
             <option>Dine out🍽</option>
             <option>Clothing👖</option>
@@ -77,7 +94,7 @@ const totalExpense=expense.reduce((total,item)=>{return total+item.amount},0)
         <div>
         <label>
             Notes:
-            <textarea name="notes" onChange={handleChange} ></textarea>
+            <textarea name="notes" onChange={handleChange} value={formData.notes} ></textarea>
         </label>
         </div>
         <div>
@@ -87,11 +104,31 @@ const totalExpense=expense.reduce((total,item)=>{return total+item.amount},0)
     <div>
         <h1>Expense Detail</h1>
         <h2>Toal: {totalExpense}</h2>
-        <ul>
-           {expense.map(spending=>{
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Total Expense</th>
+                </tr>
+            </thead>
+            <tbody>
+                {expense.map((item,id)=>{
+                    <tr key={id}>
+                        <td>{item.category}</td>
+                        <td>{item.category}</td>
+                    </tr>
+                    
+                })}
+            </tbody>
+        </table>
+        <button onClick={handleCategory}>By Category</button>
+        <input onChange={handleSearch} placeholder='search notes'></input>
+        <div>
+            <ExpenseList expense={expense}/>
+           {/* {expense.map(spending=>{
            return <ExpenseList spending={spending} key={spending.id}/>
-           })} 
-        </ul>
+           })}  */}
+        </div>
     </div>
     </div>
   )

@@ -42,3 +42,9 @@ code {
   line-height: 3;
   text-align: center;
 }
+
+.home{
+  line-height: 2.5;
+  text-align: center;
+  color:blueviolet
+}

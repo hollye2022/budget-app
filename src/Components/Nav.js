@@ -27,6 +27,7 @@ function Nav() {
       <NavLink to="BudgetPlan">
       <button>Budget Plan</button>
       </NavLink>
+
      
       </div>
       

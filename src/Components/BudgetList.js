@@ -1,8 +1,9 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function BudgetList({plan}) {
 
-const { category,amount } = plan
+const { id, category,amount } = plan
 
 // const[newamount,setNewamount]=useState("")
 
@@ -10,7 +11,9 @@ const { category,amount } = plan
   return (
    <div >
     <p>{category} ${amount}  
-    <button  >Edit Amount</button>
+    <Link to={`/BudgetPlan/${id}/edit`}>
+    <button >Edit</button>
+    </Link>
     </p>   
    </div>
          
