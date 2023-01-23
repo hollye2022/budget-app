@@ -5,7 +5,7 @@ function Nav() {
 
   return (
 
-    <div style={{height:60, border:"1px solid purple"}} className="nav-container">
+    <div style={{height:60, border:"1px solid purple"}} className="nav-container" >
 
       <Link to="/Home" style={{textDecoration:"none"}}>
        <span style={{fontSize:48}}>🌻</span>
@@ -16,19 +16,21 @@ function Nav() {
         <button>Home</button>
         </NavLink>
       
-      <NavLink to="/AddExpense">
+      <NavLink to="/budget/expense/new">
       <button>Add Expense</button>
       </NavLink>
       
-      <NavLink to="AddIncome">
+      <NavLink to="/budget/income/new">
       <button>Add Income</button>
       </NavLink>
       
-      <NavLink to="BudgetPlan">
+      <NavLink to="/budget/plan/new">
       <button>Budget Plan</button>
       </NavLink>
 
-     
+     <NavLink to="/budget/category/new">
+      <button>Add Category</button>
+     </NavLink>
       </div>
       
     </div>

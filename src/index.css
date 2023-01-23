@@ -27,23 +27,38 @@ code {
 }
 
 .plans {
-
+  background-color: pink;
   line-height: 3;
   text-align: center;
 
 }
 
 .expenses{
+  background-color: pink;
   line-height: 3;
   text-align: center;
 }
 
 .income{
+  background-color: pink;
   line-height: 3;
   text-align: center;
 }
 
+.categories{
+  background-color: pink;
+  line-height: 3;
+  text-align: center;
+}
+
+.container{
+
+  line-height: 2;
+  text-align: start;
+}
+
 .home{
+  background-color: pink;
   line-height: 2.5;
   text-align: center;
   color:blueviolet

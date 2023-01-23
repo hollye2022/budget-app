@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ExpenseList({expense}) {
+function ExpenseList({expense,newData}) {
 
     
 
@@ -17,7 +17,7 @@ function ExpenseList({expense}) {
         </tr>
       </thead>
       <tbody>
-        {expense.map((spending, id)=>(
+        {newData.map((spending, id)=>(
           <tr key={id}>
             <td>{spending.data}</td>
             <td>{spending.amount}</td>

@@ -8,14 +8,15 @@ import Home from "./Home";
 import AddIncome from "./AddIncome";
 import Fallback from "./Fallback"
 import BudgetPlan from "./BudgetPlan"
-// import EditExpenseForm from "./EditExpenseForm"
 import EditBudgetPlan from "./EditBudgetPlan";
+import AddCategory from "./AddCategory";
 
 function App() {
 
   const [plans, setPlans]= useState([])
   const [income, setIncome]=useState([])
   const [expense, setExpense] = useState([])
+  const [categories,setCategories]=useState([])
 
   useEffect(()=>{
     fetch("http://localhost:3001/plans")
@@ -33,6 +34,14 @@ function App() {
     fetch("http://localhost:3001/expense")
     .then(res=>res.json())
     .then(data=>setExpense(data))
+  },[])
+
+  useEffect(()=>{
+    fetch("http://localhost:3001/categories")
+    .then(res=>res.json())
+    .then(data=>{
+      setCategories(data)
+    })
   },[])
 // function toSubmitPlan(newPlan){
 //   const newPlans = plans.map(plan=>{
@@ -60,11 +69,7 @@ function toSort(){
   setExpense(newExpense)
 }
 
-function toSearch(data){
-  const newData=expense.filter(item => item.notes.toLowerCase().includes(data.toLowerCase()))
-setExpense(newData)
 
-}
 
 function toEdit(updatedBudget){
   const updatedBudgetArray=plans.map(item=>{
@@ -78,29 +83,41 @@ function toEdit(updatedBudget){
    setPlans(updatedBudgetArray)
 }
 
+function addCategory(data){
+  setCategories(prevs=>[...prevs,data])
+}
+
+function toDelete(id){
+const newCategories = categories.filter(category=>category.id !== id)
+setCategories(newCategories)
+}
   return (
     <div>
       <Nav />
       <Switch>
 
-        <Route  path="/AddExpense" >
-          <AddExpense expense={expense} toSubmitExpense={toSubmitExpense} toSort={toSort} toSearch={toSearch}/>
+        <Route path="/budget/category/new">
+          <AddCategory categories={categories} addCategory={addCategory} toDelete={toDelete}/>
+        </Route>
+
+        <Route  path="/budget/expense/new" >
+          <AddExpense expense={expense} toSubmitExpense={toSubmitExpense} toSort={toSort} categories={categories}/>
         </Route>
 
         <Route  path="/Home">
           <Home plans={plans} income={income} expense={expense}/>
         </Route >
 
-        <Route  path="/AddIncome" >
+        <Route  path="/budget/income/new" >
           <AddIncome income={income} toSubmitIncome={toSubmitIncome} />
         </Route>
 
-        <Route path="/BudgetPlan/:id/edit">
+        <Route path="/budget/plan/:id/edit">
           <EditBudgetPlan expense={expense} toEditExpense={toEdit}/>
         </Route>
 
-        <Route  path="/BudgetPlan" >
-          <BudgetPlan plans={plans} toSubmitPlan={toSubmitPlan} />
+        <Route  path="/budget/plan" >
+          <BudgetPlan plans={plans} toSubmitPlan={toSubmitPlan} categories={categories}/>
         </Route>
 
         <Route  path="/*" >

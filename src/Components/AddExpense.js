@@ -1,9 +1,9 @@
 import React,{ useState } from 'react'
 import ExpenseList from './ExpenseList'
+import ExpenseSummary from './ExpenseSummary'
 
 
-function AddExpense({expense, toSubmitExpense,toSort,toSearch}) {
-// console.log(expense)
+function AddExpense({expense, toSubmitExpense,toSort,categories}) {
     
     const [formData, setFormData] = useState({
         date:"",
@@ -11,6 +11,7 @@ function AddExpense({expense, toSubmitExpense,toSort,toSearch}) {
         category:"",
         notes:""
     })
+const [searchTerm, setSearchTerm]=useState("")
 
     function handleChange(e){
 
@@ -41,18 +42,18 @@ function AddExpense({expense, toSubmitExpense,toSort,toSearch}) {
     }
 const totalExpense=expense.reduce((total,item)=>{return total+ item.amount},0)
 
-// function handleClick(){
-//     let today = new Date();
-//     setFormData(prev=>({...prev,["date"]:today.toISOString().split('T')[0]}))
-//     console.log(formData)
-// }
 function handleCategory(){
     toSort()
 }
 
 function handleSearch(e){
-    toSearch(e.target.value)
+    setSearchTerm(e.target.value)
 }
+
+const newData=expense.filter(item => item.notes.toLowerCase().includes(searchTerm.toLowerCase()))
+
+
+  
   return (
     <div >
     <form onSubmit={handleExpenseSubmit} className='expenses'>
@@ -74,20 +75,10 @@ function handleSearch(e){
         <label>
             Category:
         <select onChange={handleChange} name="category" value={formData.category} >
-        <option>Grocery🥦</option>
-            <option>Dine out🍽</option>
-            <option>Clothing👖</option>
-            <option>Gas⛽️</option>
-            <option>Household🏚</option>
-            <option>Kids🤑</option>
-            <option>Travel🌠</option>
-            <option>Rent💲</option>
-            <option>Unexpected Bill🧾</option>
-            <option>Entertainment😁</option>
-            <option>Study📖</option>
-            <option>Gifting🎁</option>
-            <option>Debt💸</option>
-            <option>Insurance🌈</option>
+        <option></option>
+        {categories.map(category=>{
+            return <option value={category.category} key={category.id}>{category.category}</option>
+        })}
         </select>
         </label>
         </div>
@@ -103,28 +94,15 @@ function handleSearch(e){
     </form>
     <div>
         <h1>Expense Detail</h1>
-        <h2>Toal: {totalExpense}</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Total Expense</th>
-                </tr>
-            </thead>
-            <tbody>
-                {expense.map((item,id)=>{
-                    <tr key={id}>
-                        <td>{item.category}</td>
-                        <td>{item.category}</td>
-                    </tr>
-                    
-                })}
-            </tbody>
-        </table>
-        <button onClick={handleCategory}>By Category</button>
-        <input onChange={handleSearch} placeholder='search notes'></input>
+        <h2>Total: {totalExpense}</h2>
         <div>
-            <ExpenseList expense={expense}/>
+            <ExpenseSummary  categories={categories} expense={expense}/>
+        </div>
+        
+        <button onClick={handleCategory}>By Category</button>
+        <input onChange={handleSearch} placeholder='search notes' value={searchTerm}></input>
+        <div className='container'>
+            <ExpenseList expense={expense} newData={newData}/>
            {/* {expense.map(spending=>{
            return <ExpenseList spending={spending} key={spending.id}/>
            })}  */}

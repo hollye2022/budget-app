@@ -51,6 +51,7 @@ function AddIncome({income, toSubmitIncome}) {
         <label>
             Source:
             <select type="text" onChange={handleChange} name="source" value={formData.source} >
+                <option></option>
                 <option>Job1</option>
                 <option>Job2</option>
                 <option>Gifts</option>
@@ -59,13 +60,15 @@ function AddIncome({income, toSubmitIncome}) {
     </div>
     <button type="submit">+ADD</button>
     </form>
+   
     <div>
         <h1>Income Detail</h1>
         <h2>Total: {totalIncome}</h2>
         <ul>
-         {income.map(item=>{
+            <IncomeList income={income}/>
+         {/* {income.map(item=>{
                return <IncomeList item={item} key={item.id}/>
-            })}
+            })} */}
         </ul>
     </div>
     </>
