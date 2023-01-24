@@ -1,6 +1,12 @@
 {
   "plans": [],
-  "income": [],
+  "income": [
+    {
+      "amount": 300,
+      "source": "Air B&B",
+      "id": 1
+    }
+  ],
   "expense": [],
   "categories": [
     {

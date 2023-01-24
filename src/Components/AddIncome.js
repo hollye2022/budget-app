@@ -50,12 +50,13 @@ function AddIncome({income, toSubmitIncome}) {
     <div>
         <label>
             Source:
-            <select type="text" onChange={handleChange} name="source" value={formData.source} >
+            <input type="text" value={formData.source} name="source" onChange={handleChange}></input>
+            {/* <select type="text" onChange={handleChange} name="source" value={formData.source} >
                 <option></option>
                 <option>Job1</option>
                 <option>Job2</option>
                 <option>Gifts</option>
-            </select>
+            </select> */}
         </label>
     </div>
     <button type="submit">+ADD</button>
