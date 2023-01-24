@@ -1,13 +1,63 @@
 {
-  "plans": [],
+  "plans": [
+    {
+      "category": "Car 🚗",
+      "amount": 350,
+      "id": 1
+    },
+    {
+      "category": "Dine out",
+      "amount": 300,
+      "id": 2
+    },
+    {
+      "category": "Rent💲",
+      "amount": 1800,
+      "id": 3
+    }
+  ],
   "income": [
     {
       "amount": 300,
       "source": "Air B&B",
       "id": 1
+    },
+    {
+      "amount": 1000,
+      "source": "teaching",
+      "id": 2
     }
   ],
-  "expense": [],
+  "expense": [
+    {
+      "date": "2023-01-16",
+      "amount": 300,
+      "category": "Food🍳",
+      "notes": "tacos",
+      "id": 1
+    },
+    {
+      "date": "2023-01-16",
+      "amount": 300,
+      "category": "Clothing👖",
+      "notes": "shoes",
+      "id": 2
+    },
+    {
+      "date": "2023-01-03",
+      "amount": 30,
+      "category": "Food🍳",
+      "notes": "",
+      "id": 3
+    },
+    {
+      "date": "2023-01-17",
+      "amount": 100,
+      "category": "gas",
+      "notes": "gas",
+      "id": 4
+    }
+  ],
   "categories": [
     {
       "category": "Food🍳",
@@ -64,6 +114,10 @@
     {
       "category": "Truck 🛻",
       "id": 17
+    },
+    {
+      "category": "Dine out",
+      "id": 18
     }
   ]
 }

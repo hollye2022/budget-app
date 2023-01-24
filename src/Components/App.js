@@ -113,7 +113,7 @@ setCategories(newCategories)
         </Route>
 
         <Route path="/budget/plan/:id/edit">
-          <EditBudgetPlan expense={expense} toEditExpense={toEdit}/>
+          <EditBudgetPlan expense={expense} toEditExpense={toEdit} categories={categories}/>
         </Route>
 
         <Route  path="/budget/plan" >

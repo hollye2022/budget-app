@@ -11,7 +11,7 @@ const { id, category,amount } = plan
   return (
    <div >
     <p>{category} ${amount}  
-    <Link to={`/BudgetPlan/${id}/edit`}>
+    <Link to={`/budget/plan/${id}/edit`} >
     <button >Edit</button>
     </Link>
     </p>   

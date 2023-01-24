@@ -76,7 +76,7 @@ const totalBudget= plans.reduce((total,item)=>{return total + item.amount},0)
         <h1>Budget Plan</h1>
         <h2>Total: {totalBudget}</h2>
         {plans.map(plan=>{
-       return <BudgetList plan={plan} key={plan.id} />
+       return <BudgetList plan={plan} key={plan.id}/>
      })}
     
     </div>
